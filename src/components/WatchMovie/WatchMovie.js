@@ -1,0 +1,65 @@
+import React, { Component } from 'react';
+import YouTube from 'react-youtube';
+import { Link } from 'react-router-dom';
+import watchMovie from '../../services/watchMovie';
+
+export default class WatchMovie extends Component{
+
+    state = {
+        movieData : ''
+    }
+
+    componentDidMount(){
+        watchMovie(this.props.match.params.id).then((resp) => {
+            console.log(resp.data.data.singleMovies)
+            this.setState({
+                movieData: resp.data.data.singleMovies
+            })
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+
+    youtubeParser(url){
+        console.log(url);
+        var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+        var match = url.match(regExp);
+        return(match&&match[7].length==11) ? match[7] : false;
+    }
+
+    loadMovie() {
+        if(!this.state.movieData){
+            return(
+                <div></div>
+            )
+        }else{
+            console.log(this.state.movieData)
+            const playerOptions = {
+                height: '400',
+                width: '800',
+                playervars:{
+                    autoplay:1
+                }
+            };
+            console.log(this.state.movieData.url)
+            let url = this.youtubeParser(this.state.movieData.url)
+            console.log(url);
+    
+            return(
+                <YouTube videoId = {url} opts = {playerOptions} />
+            )
+        }
+    }
+
+    
+
+    render(){
+
+        return(
+            <div>
+                <div>You are watching {this.state.movieData.name}</div>
+                {this.loadMovie()}
+            </div>
+        )
+    }
+}
