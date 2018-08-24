@@ -8,12 +8,12 @@ export default () => {
         method: 'post',
         data:{
             query:`
-            query{
-                allRatings{
-                    _id,
-                    name
+                query{
+                    allRatings{
+                        _id,
+                        name
+                    }
                 }
-            }
             `
         }, headers: {'Authorization' : 'JWT ' +getToken()}
     })

@@ -9,13 +9,13 @@ export default (id) => {
         method: 'post',
         data:{
             query:`
-            query{
-                singleMovies(id:"${id}"){
-                    _id,
-                    name,
-                    url
-                }
-            }`
+                query{
+                    singleMovies(id:"${id}"){
+                        _id,
+                        name,
+                        url
+                    }
+                }`
         }, headers: {'Authorization' : 'JWT ' + getToken()}
     })
 }

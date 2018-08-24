@@ -2,19 +2,20 @@ import axios from 'axios';
 import getToken from '../resolvers/getToken';
 import constantes from '../const';
 
-export default () => {
+export default (data) => {
+    console.log(data)
+
     return axios({
         url:constantes.local+'graphql',
-        method: 'post',
+        method:'post',
         data:{
             query:`
-                query{
-                    allGenres{
-                        _id,
+                mutation{
+                    deleteMovie(id:"${data}){
                         name
                     }
                 }
             `
-        }, headers: {'Authorization' : 'JWT ' +getToken()}
+        }, headers:{'Authorization':'JWT '+getToken()}
     })
 }

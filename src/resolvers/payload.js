@@ -1,3 +1,5 @@
+
+
 export default (token) => {
     let base64Uri = token.split('.')[1];
     let base64 = base64Uri.replace('-', '+').replace('_', '/');

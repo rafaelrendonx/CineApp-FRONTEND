@@ -46,7 +46,13 @@ export default class WatchMovie extends Component{
             console.log(url);
     
             return(
-                <YouTube videoId = {url} opts = {playerOptions} />
+                <div>
+                     <div>You are watching {this.state.movieData.name}</div>
+                        <YouTube videoId={url} opts={playerOptions}  />
+                             <Link className='btn btn-info animated infinite pulse' to={`/movie/${this.state.movieData._id}`}  >
+                                Volver
+                            </Link>
+                </div>
             )
         }
     }
@@ -57,7 +63,6 @@ export default class WatchMovie extends Component{
 
         return(
             <div>
-                <div>You are watching {this.state.movieData.name}</div>
                 {this.loadMovie()}
             </div>
         )

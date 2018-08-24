@@ -58,6 +58,9 @@ class Movie extends Component {
                                 <Link className = "btn btn-info boton-volver" to = '/movies'>
                                     Back
                                 </Link>
+                                <Link className = "btn btn-danger boton-volver" to = {`/movie/delete/${_id}`}>
+                                    DELETE MOVIE
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -66,13 +69,13 @@ class Movie extends Component {
     }
 
     render() {
-        console.log(this.props)
+        console.log(this.state)
         return (
             <div>
-                
+                {this.loadMovie()}
             </div>
         )
     }
 }
 
-export default Movie
+export default Movie;

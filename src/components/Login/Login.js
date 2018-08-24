@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FormErrors from '../FormErrors/FormErrors';
 import login from '../../services/login';
+import './Login.css';
 import { Link } from 'react-router-dom'
 
 class Login extends Component {
@@ -34,9 +35,12 @@ class Login extends Component {
         const name = e.target.name;
         const value = e.target.value;
         this.setState({[name]: value},
-            () => {this.validateField(name,value)});
-        console.log(this.state.email, '<<<email')
-        console.log(this.state.password, '<<<password')
+            () => {this.validateField(name,value)
+            console.log(this.state.email, '<<<email')
+            console.log(this.state.password, '<<<password')
+            });
+        console.log(this.state.email,'<<<email')
+        console.log(this.state.password,'<<<password')
     }
 
     validateField(fieldName, value){

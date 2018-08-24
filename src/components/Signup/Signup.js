@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import signup from '../../services/signup';
+import './Signup.css'
 
 
 

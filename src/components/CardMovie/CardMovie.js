@@ -8,7 +8,12 @@ class CardMovie extends Component{
         rank: calculateRank(this.props.movie.rank)
     }
 
+    componentDidMount(){
+        console.log(this.props.movie.rank)
+    }
+
     render() {
+        console.log(this.props.movie.rank)
         return(
             <div className = "card" style = {{width: "14rem"}}>
                 <h5 className = "card-title" onClick = {() => this.props.redirect(this.state.movie._id)}>
@@ -16,12 +21,12 @@ class CardMovie extends Component{
                 </h5>
                 <img src = {this.state.movie.image} alt = "Poster"/>
                 <div className = "card-body">
-                   {/*} <p className = "card-text">{this.state.movie.synopsis}</p>*/}
-                    <Rate defaultValue = {parseFloat(this.state.rank)} 
-                           allowHalf
-                           onChange = {(rank) => this.props.getRank(this.state.movie._id, rank)}
-                           />
-                           <p>{this.state.rank}</p>
+                    <Rate 
+                    defaultValue = {parseFloat(this.state.rank)} 
+                    allowHalf
+                    onChange = {(rank) => this.props.getRank(this.state.movie._id, rank)}
+                    />
+                    <p>{this.state.rank}</p>
                 </div>
             </div>
         )

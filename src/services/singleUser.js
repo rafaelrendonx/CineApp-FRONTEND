@@ -9,16 +9,16 @@ export default (id) => {
         method: 'post',
         data: {
             query:`
-            query{
-                singleUsers(id:"${id}"){
-                    _id,
-                    name,
-                    lastName,
-                    email,
-                    phorne
+                query{
+                    singleUsers(id:"${id}"){
+                        _id,
+                        name,
+                        lastName,
+                        email,
+                        phone
+                    }
                 }
-            }
-        `
+            `
         }, headers:{'Authorization':'JWT ' + getToken()}
     })
 }

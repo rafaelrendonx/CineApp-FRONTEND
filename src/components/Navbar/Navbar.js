@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import payload from '../../resolvers/payload';
+import './Navbar.css'
+//import Konami from 'react-konami-code';
 
 class Navbar extends Component {
+
+    state = {
+      animate: 'navbar-brand',
+    }
+
+    easterEgg = () => {
+      this.setState({animate: 'navbar-brand animated fadeOutLeft'})
+      alert("Hey, you typed the Konami Code!")
+    }
 
     chargeProfile = () => {
       const token = localStorage.getItem('token');
@@ -12,7 +23,7 @@ class Navbar extends Component {
         return (
           <ul className = "navbar-nav">
             <li className = "navbar-item">
-              <Link className = "nav-link" to = "/perfil">Welcome, {pl.email}</Link>
+              <Link className = "nav-link" to = {`/profile/${pl.id}`}>Welcome, {pl.email}</Link>
             </li>
             <li className = "navbar-item">
               <Link className = "nav-link" to = "/movies">Movies</Link>
@@ -42,7 +53,7 @@ class Navbar extends Component {
     render() {
         return(
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <Link className="navbar-brand" to="/">Navbar</Link>
+        <Link className={this.state.animate} to="/">Netflix</Link>
         <button className="navbar-toggler" 
                 type="button" 
                 data-toggle="collapse" 
@@ -55,7 +66,6 @@ class Navbar extends Component {
       
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           {this.chargeProfile()}
-          
         </div>
       </nav>
         )

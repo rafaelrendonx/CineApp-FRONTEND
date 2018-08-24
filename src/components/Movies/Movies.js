@@ -28,8 +28,9 @@ class Movies extends Component {
     }
 
     getRankValue = (id,rank) => {
+        console.log(rank);
         addRank({id, rank}).then((resp) => {
-            console.log(resp)
+            console.log(resp, '<<<GET RANK VALUE')
         })
     }
 
@@ -58,7 +59,7 @@ class Movies extends Component {
         return(
             <div className = "row justify-content-center">
                 <div className = "col-md-10 col-lg-8 text-center">
-                    <h3 className = "movie-title">All Movies</h3>
+                    <h3 className = "movies-title">All Movies</h3>
                     {this.renderMovies()}
                 </div>
             </div>

@@ -30,7 +30,8 @@ export default () => {
                         premium,
                         url
                     }
-                }`
+                }
+                `
         }, headers: {'Authorization':'JWT '+getToken()}
     })
 }
