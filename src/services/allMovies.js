@@ -26,6 +26,8 @@ export default () => {
                             name,
                             description
                         },
+                        language,
+                        url
                     }
                 }
                 `

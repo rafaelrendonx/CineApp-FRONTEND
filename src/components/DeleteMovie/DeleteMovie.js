@@ -2,33 +2,36 @@ import React, { Component } from 'react';
 import watchMovie from '../../services/watchMovie';
 import deleteMovie from '../../services/deleteMovie';
 
+
+
 class DeleteMovie extends Component {
 
-    state = {
+    state={
         movieData: ''
     }
 
     componentDidMount(){
-        watchMovie(this.props.match.id).then((resp) => {
-            console.log(resp.data.dat.singleMovies)
+        watchMovie(this.props.match.params.id).then((resp)=>{
+            console.log(resp,'<<<<<<<<')
+            console.log(resp.data.data.singleMovie)
             this.setState({
-                movieData: resp.data.data.singleMovies
+                movieData: resp.data.data.singleMovie
             })
-        }).catch((err) => {
+        }).catch((err)=>{
             console.log(err);
         })
         console.log(this.state)
     }
 
-    deleteMovie = () =>{
-        deleteMovie(this.props.match.params.id).then((resp) => {
+    deleteMovie = () => {
+        deleteMovie(this.props.match.params.id).then((resp)=>{
             console.log(resp)
             this.props.history.push('/movies');
 
-        }).catch((err) => {console.log(err)})
+        }).catch((err)=>{console.log(err)})
     }
 
-    goBack = () => {
+    goBack = () =>{
         this.props.history.push('/movie/'+this.props.match.params.id)
     }
 
@@ -36,22 +39,23 @@ class DeleteMovie extends Component {
         const {name, image} = this.state.movieData
         console.log(this.state)
         if(!this.state){
-            return(
+            return( 
                 <div></div>
             )
         }else{
-
+           
             return(
-                <div className = 'jumbotron'>
+                <div className="jumbotron">
                     Are you sure you want to delete the movie <strong>{name}</strong> ?
-                    <button className = "btn btn-danger" onClick = {this.deleteMovie}>
+                    <button className="btn btn-danger" onClick={this.deleteMovie}>
                         YES
                     </button>
-                    <button className = "btn btn-info" onClick = {this.goBack}>
-                        NO
+                    <button className="btn btn-info" onClick={this.goBack}>
+                        NOPE!
                     </button>
-                    <img src = {image} alt = ""/>
+                    <img src={image} alt=""/>
                 </div>
+                
             )
         }
     }
@@ -59,8 +63,9 @@ class DeleteMovie extends Component {
     render(){
         return(
             <div>
-                {this.renderOptions}
+            {this.renderOptions()}
             </div>
+            
         )
     }
 }

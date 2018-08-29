@@ -72,7 +72,7 @@ class FormMovie extends Component {
         })
     }
 
-    /*handleUploadSuccess = (filename) => {
+    handleUploadSuccess = (filename) => {
         console.log(filename)
         Firebase.storage().ref('images').child(filename)
             .getDownloadURL().then((url) => {
@@ -80,7 +80,7 @@ class FormMovie extends Component {
                 this.setState({image:url})
                 console.log(this.state)
             })
-    }*/
+    }
 
     chargeForm = () => {
         if(this.state.allGenres !== "" && this.state.allRatings !== ""){
@@ -88,29 +88,29 @@ class FormMovie extends Component {
                 <form onSubmit = {this.handleSubmit}>
                     <div className = "form-group">
                         <label htmlFor = "name">Name:</label>
-                        <input type = "text" value = "{this.state.name}" 
-                               className = "form-control" name = "name" onChange = "{this.onChangeInput}"/>
+                        <input type = "text" value = {this.state.name}
+                               className = "form-control" name = "name" onChange = {this.onChangeInput}/>
                     </div>
                     <div className = "form-group">
                         <label htmlFor = "name">Synopsis:</label>
                         <textarea name = "name" id = "synopsis" cols = "30" rows = "10"  
-                                  value = "{this.state.synopsis}"  onChange = "{this.onChangeInput}">
+                                  value = {this.state.synopsis}  onChange = {this.onChangeInput}>
                         </textarea>
                     </div>
                     <div className = "form-group">
                         <label htmlFor = "url">URL:</label>
-                        <input type = "text" value = "{this.state.url}" 
-                               className = "form-control" name = "url" onChange = "{this.onChangeInput}"/>
+                        <input type = "text" value = {this.state.url}
+                               className = "form-control" name = "url" onChange = {this.onChangeInput}/>
                     </div>
                     <div className = "form-group">
                         <label htmlFor = "director">Director:</label>
-                        <input type = "text" value = "{this.state.director}" 
-                               className = "form-control" name = "director" onChange = "{this.onChangeInput}"/>
+                        <input type = "text" value = {this.state.director}
+                               className = "form-control" name = "director" onChange = {this.onChangeInput}/>
                     </div>
                     <div className = "form-group">
                         <label htmlFor = "year">Year:</label>
-                        <input type = "number" value = "{this.state.year}" 
-                               className = "form-control" name = "year" onChange = "{this.onChangeInput}"/>
+                        <input type = "number" value = {this.state.year} 
+                               className = "form-control" name = "year" onChange = {this.onChangeInput}/>
                     </div>
                     <div className = "form-group">
                         <label htmlFor = "genre">Genre:</label>
@@ -119,6 +119,16 @@ class FormMovie extends Component {
                     <div className = "form-group">
                         <label htmlFor = "genre">Rating:</label>
                         {this.createSelecter(this.state.allRatings, "rating")}
+                    </div>
+                    <div className="form-group">
+                        Add Poster
+                        <FileUploader
+                            accept="image/*"
+                            randomizeFilename
+                            storageRef={Firebase.storage().ref('images')}
+                            onUploadError={error => console.log(error)}
+                            onUploadSuccess={this.handleUploadSuccess}
+                        />                        
                     </div>
                     <button type = "submit" className = "btn btn-info">Save</button>
                 </form>

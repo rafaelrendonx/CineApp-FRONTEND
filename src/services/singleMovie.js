@@ -22,6 +22,8 @@ export default (id) => {
                         },
                         rating{name},
                         year,
+                        language,
+                        url
                     }
                 }
             `

@@ -6,7 +6,7 @@ export default (data) => {
     console.log(data)
 
     return axios({
-        url:constantes.local+'graphql',
+        url:constantes.url+'graphql',
         method:'post',
         data:{
             query:`

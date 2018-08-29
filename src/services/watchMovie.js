@@ -13,7 +13,8 @@ export default (id) => {
                     singleMovie(id:"${id}"){
                         _id,
                         name,
-                        url
+                        url,
+                        image
                     }
                 }`
         }, headers: {'Authorization' : 'JWT ' + getToken()}
