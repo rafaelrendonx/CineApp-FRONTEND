@@ -12,11 +12,11 @@ class Movies extends Component {
 
 
     componentDidMount() {
-    
+        console.log("hola")
         allMovies().then((resp) => {
             console.log(resp.data)
             this.setState({
-                movies: resp.data.allMovies
+                movies: resp.data.data.allMovies
             })
         }).catch((err) => {
             console.log(err)

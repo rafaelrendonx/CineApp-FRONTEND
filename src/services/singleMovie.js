@@ -10,7 +10,7 @@ export default (id) => {
         data:{
             query:`
                 query{
-                    singleMovies(id:"${id}"){
+                    singleMovie(id:"${id}"){
                         _id,
                         name,
                         image,
@@ -20,9 +20,8 @@ export default (id) => {
                         genre{
                             name
                         },
-                        rating(name),
+                        rating{name},
                         year,
-                        url
                     }
                 }
             `

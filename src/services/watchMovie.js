@@ -5,12 +5,12 @@ import constantes from '../const';
 export default (id) => {
 
     return axios ({
-        url: constantes.url+'grpahql',
+        url: constantes.url+'graphql',
         method: 'post',
         data:{
             query:`
                 query{
-                    singleMovies(id:"${id}"){
+                    singleMovie(id:"${id}"){
                         _id,
                         name,
                         url

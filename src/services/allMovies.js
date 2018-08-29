@@ -26,9 +26,6 @@ export default () => {
                             name,
                             description
                         },
-                        language,
-                        premium,
-                        url
                     }
                 }
                 `

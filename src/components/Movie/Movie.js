@@ -11,10 +11,10 @@ class Movie extends Component {
     }
 
     componentDidMount(){
-        singleMovie(this.state.id).then((movie) => {
-            console.log(movie)
+        singleMovie(this.state.id).then((resp) => {
+            console.log(resp.data)
             this.setState({
-                movie: movie.data.data.singleMovie
+                movie: resp.data.data.singleMovie
             })
         }).catch((err) => {
             console.log(err)
