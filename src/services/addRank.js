@@ -7,7 +7,7 @@ export default (data) => {
     let newRank = `{rank: ${rank}}`;
 
     return axios ({
-        url: constantes.local+'graphql',
+        url: constantes.url+'graphql',
         method: 'post',
         data:{
             query:`

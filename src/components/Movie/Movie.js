@@ -26,13 +26,14 @@ class Movie extends Component {
             name,
             image,
             synopsis,
-            director,
+            //director,
             duration,
             language,
-            genre,
-            rating,
-            year,
-            url} = this.state.movie
+            //genre,
+            //rating,
+            //year,
+            //url
+        } = this.state.movie
 
             if(!this.state.movie) {
                 return(

@@ -9,10 +9,19 @@ export default (id, data) => {
     console.log(dataDATA);
 
     return axios ({
-        url:constantes.local+'graphql',
+        url:constantes.url+'graphql',
         method:'post',
         data:{
-            query:``
-        }
+            query:`
+                mutation{
+                    updateUser(id:"${id}",data:${dataDATA}){
+                        _id,
+                        name,
+                        email,
+                        phone
+                    }
+                }
+            `
+        },headers: {'Authorization': 'JWT ' +getToken()}
     })
 }

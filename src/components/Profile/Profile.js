@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import singleUSer from '../../services/singleUser';
 import { Link } from 'react-router-dom';
 import singleUser from '../../services/singleUser';
 
@@ -21,7 +20,7 @@ class Profile extends Component {
 
     chargeProfile(){
 
-        let { name, email, phone, lastName } = this.state.userData;
+        let { name, phone, lastName } = this.state.userData;
         
         if(this.state.userData === "") {
             return(
